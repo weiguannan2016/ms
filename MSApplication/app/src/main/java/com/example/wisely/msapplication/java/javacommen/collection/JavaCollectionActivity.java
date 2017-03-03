@@ -47,21 +47,37 @@ public class JavaCollectionActivity extends AppCompatActivity implements View.On
         }
     }
 
+    /** 测试 add*/
     private void testArrayList() {
-        LogUtils.w("enter - testArrayList");
         List<String> arr = new ArrayList();
         for (int i=0;i<10;i++){
             arr.add(i+"  号");
         }
 
+        arr.add(1,"星星点灯");
+
+        for (String strArr:arr
+             ) {
+            LogUtils.i("test add index  : "+strArr);
+        }
+    }
+
+
+
+    /** 测试  retainAll*/
+    private void testArrayList1() {
+        LogUtils.w("enter - testArrayList");
+        List<String> arr = new ArrayList();
+        for (int i=0;i<10;i++){
+            arr.add(i+"  号");
+        }
+        LogUtils.i("arr  size()  : "+arr.size());
         List<String> arrChild = new ArrayList();
         for(int j = 0;j<5;j++){
-            arr.add(j+"  号");
+            arrChild.add(j+"  号");
         }
-
-        LogUtils.i("arr.size : "+arr.size());
-        arr.retainAll(arrChild);
-
+        boolean  isChange = arr.retainAll(arrChild);
+        LogUtils.i("arr.size : "+arr.size()  + " isChange"+isChange);
         for (String strArr:arr
              ) {
             LogUtils.i("arr parent when retainAll : "+ strArr);
